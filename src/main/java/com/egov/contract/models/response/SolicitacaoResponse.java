@@ -20,4 +20,5 @@ public class SolicitacaoResponse {
     private String lng;
     private String descricao;
     private String endereco;
+    private String status;
 }

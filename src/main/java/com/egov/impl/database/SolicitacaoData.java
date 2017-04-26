@@ -10,6 +10,13 @@ import java.util.List;
  */
 public interface SolicitacaoData {
     @Select("Select * from solicitacao")
+    @Results(value = {@Result(property = "id", column = "id"),
+            @Result(property = "usuario", column = "usuario_id"),
+            @Result(property = "tipo", column = "tipo_id"),
+            @Result(property = "lat", column = "lat"),
+            @Result(property = "lng", column = "lng"),
+            @Result(property = "descricao", column = "descricao"),
+            @Result(property = "status", column = "status")})
     List<Solicitacao> selectSolicitacoes();
 
     @Select("select * from solicitacao where id = #{id}")
@@ -18,17 +25,19 @@ public interface SolicitacaoData {
             @Result(property = "tipo", column = "tipo_id"),
             @Result(property = "lat", column = "lat"),
             @Result(property = "lng", column = "lng"),
-            @Result(property = "descricao", column = "descricao")})
+            @Result(property = "descricao", column = "descricao"),
+            @Result(property = "status", column = "status")})
     Solicitacao selectById(@Param("id") int id);
 
-    @Insert("INSERT INTO solicitacao (id, usuario_id, tipo_id, lat, lng, descricao, endereco) " +
+    @Insert("INSERT INTO solicitacao (id, usuario_id, tipo_id, lat, lng, descricao, endereco, status) " +
             "VALUES (NULL, " +
             "#{usuario}, " +
             "#{tipo}, " +
             "#{lat}, " +
             "#{lng}, " +
             "#{descricao}, " +
-            "#{endereco})")
+            "#{endereco}, " +
+            "#{status}) ")
     int insertSolicitacao(Solicitacao solicitacao);
 
     @Update("UPDATE solicitacao " +
@@ -37,7 +46,8 @@ public interface SolicitacaoData {
             "lat = #{lat}, " +
             "lng = #{lng}, " +
             "descricao = #{descricao}, " +
-            "endereco = #{endereco} " +
+            "endereco = #{endereco}, " +
+            "status = #{status} " +
             "WHERE solicitacao.id = #{id}")
     int updateSolicitacao(Solicitacao solicitacao);
 

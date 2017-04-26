@@ -27,4 +27,6 @@ public class Solicitacao {
     private String descricao;
     @NotNull
     private String endereco;
+    @NotNull
+    private String status;
 }

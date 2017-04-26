@@ -27,9 +27,7 @@ public class SolicitacaoService {
     public List<SolicitacaoResponse> getSolicitacoes(){
         List<SolicitacaoResponse> list = new ArrayList<>();
 
-        solicitacaoData.selectSolicitacoes().forEach(solicitacao -> {
-            list.add(buildResponse(solicitacao));
-        });
+        solicitacaoData.selectSolicitacoes().forEach(solicitacao -> list.add(buildResponse(solicitacao)));
 
         return list;
     }

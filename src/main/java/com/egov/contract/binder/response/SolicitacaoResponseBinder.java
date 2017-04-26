@@ -15,6 +15,7 @@ public class SolicitacaoResponseBinder {
         solicitacaoResponse.setEndereco(solicitacao.getEndereco());
         solicitacaoResponse.setLat(solicitacao.getLat());
         solicitacaoResponse.setLng(solicitacao.getLng());
+        solicitacaoResponse.setStatus(solicitacao.getStatus());
 
         return solicitacaoResponse;
     }

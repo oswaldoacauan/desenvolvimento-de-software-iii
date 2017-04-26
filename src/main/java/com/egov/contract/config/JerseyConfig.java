@@ -16,5 +16,8 @@ public class JerseyConfig extends ResourceConfig {
         register(UsuarioEndPoint.class);
         register(JacksonFeature.class);
         register(CORSFilter.class);
+        register(io.swagger.jaxrs.listing.ApiListingResource.class);
+        register(io.swagger.jaxrs.listing.SwaggerSerializers.class);
+        packages("io.swagger.jaxrs.json");
     }
 }
