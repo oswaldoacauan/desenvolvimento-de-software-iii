@@ -27,7 +27,7 @@ public class UsuarioEndPoint {
     @GET
     @Path("/usuario/{id}")
     @Produces({MediaType.APPLICATION_JSON})
-    public Usuario getSolicitacaoById(@PathParam("id") int id) {
+    public Usuario getUsuario(@PathParam("id") int id) {
         return usuarioService.getUsuario(id);
     }
 
@@ -41,7 +41,7 @@ public class UsuarioEndPoint {
     @PUT
     @Path("/usuario")
     @Consumes({MediaType.APPLICATION_JSON})
-    public int updateUsuaria(Usuario usuario){
+    public int updateUsuario(@Valid Usuario usuario){
         return usuarioService.updateUsuario(usuario);
     }
 

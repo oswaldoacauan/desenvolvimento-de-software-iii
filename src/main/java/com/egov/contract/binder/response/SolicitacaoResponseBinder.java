@@ -7,7 +7,7 @@ import com.egov.impl.entity.Solicitacao;
  * Created by marcus on 24/04/2017.
  */
 public class SolicitacaoResponseBinder {
-    public static SolicitacaoResponse bindToSolicitacaoModel(Solicitacao solicitacao){
+    public static SolicitacaoResponse bindToSolicitacaoResponse(Solicitacao solicitacao){
         SolicitacaoResponse solicitacaoResponse = new SolicitacaoResponse();
 
         solicitacaoResponse.setId(solicitacao.getId());

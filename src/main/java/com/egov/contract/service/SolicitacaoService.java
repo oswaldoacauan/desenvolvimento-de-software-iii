@@ -28,14 +28,14 @@ public class SolicitacaoService {
         List<SolicitacaoResponse> list = new ArrayList<>();
 
         solicitacaoData.selectSolicitacoes().forEach(solicitacao -> {
-            list.add(completaDados(solicitacao));
+            list.add(buildResponse(solicitacao));
         });
 
         return list;
     }
 
     public SolicitacaoResponse getSolicitacao(int id){
-        return completaDados(solicitacaoData.selectById(id));
+        return buildResponse(solicitacaoData.selectById(id));
     }
 
     public int insertSolicitacao(Solicitacao solicitacao){
@@ -50,8 +50,8 @@ public class SolicitacaoService {
         return solicitacaoData.deleteSolicitacao(id);
     }
 
-    private SolicitacaoResponse completaDados(Solicitacao solicitacao){
-        SolicitacaoResponse solicitacaoResponse = SolicitacaoResponseBinder.bindToSolicitacaoModel(solicitacao);
+    private SolicitacaoResponse buildResponse(Solicitacao solicitacao){
+        SolicitacaoResponse solicitacaoResponse = SolicitacaoResponseBinder.bindToSolicitacaoResponse(solicitacao);
         solicitacaoResponse.setUsuario(usuarioService.getUsuario(solicitacao.getUsuario()));
         solicitacaoResponse.setTipo(tipoSolicitacaoService.getTipoSolicitacao(solicitacao.getTipo()));
         return solicitacaoResponse;
