@@ -27,6 +27,6 @@ dependencies {
 	compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.8.4'
 	compile("io.swagger:swagger-jersey2-jaxrs:1.5.10")
 	runtime('mysql:mysql-connector-java')
-	compileOnly('org.projectlombok:lombok')
+	compile('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

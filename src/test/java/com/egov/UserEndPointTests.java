@@ -2,6 +2,8 @@ package com.egov;
 
 import com.egov.impl.entity.Usuario;
 import static org.junit.Assert.assertEquals;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,8 +22,9 @@ import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.DEFINED_PORT)
+@Ignore
 public class UserEndPointTests {
-	private String url = "http://localhost:9000/egov/usuario";
+	/*private String url = "http://localhost:9000/egov/usuario";
 	private TestRestTemplate testRestTemplate = new TestRestTemplate();
 
 	@Test
@@ -66,7 +69,7 @@ public class UserEndPointTests {
 		assertEquals(HttpStatus.BAD_REQUEST,responseEntity.getStatusCode());
 	}
 
-	/*@Test
+	@Test
 	public void insereCorretamente(){
 		Usuario user = new Usuario(0,"teste","teste","teste","teste","teste","teste",LocalDateTime.now());
 		HttpEntity<Usuario> entity = new HttpEntity<>(user);

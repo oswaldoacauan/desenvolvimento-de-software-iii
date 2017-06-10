@@ -14,7 +14,7 @@ public class SwaggerConfig {
             BeanConfig beanConfig = new BeanConfig();
             beanConfig.setVersion("1.0.0");
             beanConfig.setSchemes(new String[]{"http"});
-            beanConfig.setHost("localhost:900");
+            beanConfig.setHost("localhost:9000");
             beanConfig.setResourcePackage("com.egov.contract.endpoints");
             beanConfig.setScan(true);
             return beanConfig;
