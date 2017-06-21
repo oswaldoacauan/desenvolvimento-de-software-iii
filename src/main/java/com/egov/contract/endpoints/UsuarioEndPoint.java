@@ -1,5 +1,6 @@
 package com.egov.contract.endpoints;
 
+import com.egov.contract.models.request.Login;
 import com.egov.contract.models.response.SolicitacaoResponse;
 import com.egov.contract.service.UsuarioService;
 import com.egov.impl.entity.Usuario;
@@ -41,8 +42,16 @@ public class UsuarioEndPoint {
     @Path("/usuario")
     @Consumes({MediaType.APPLICATION_JSON})
     @ApiOperation(value = "Insere um Usuario", response = Integer.class)
-    public int createUsuario(@Valid Usuario usuario) {
+    public long createUsuario(@Valid Usuario usuario) {
         return usuarioService.insertUsuario(usuario);
+    }
+
+    @POST
+    @Path("/login")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @ApiOperation(value = "Faz o login do Usuario", response = Integer.class)
+    public boolean login(@Valid Login login) {
+        return usuarioService.login(login);
     }
 
     @PUT

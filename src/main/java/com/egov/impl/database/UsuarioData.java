@@ -32,4 +32,10 @@ public interface UsuarioData {
 
     @Delete("DELETE FROM USUARIO WHERE ID = #{id}")
     int deleteUsuario(@Param("id") int id);
+
+    @Select("select last_insert_id()")
+    long lastInsertId();
+
+    @Select("select count(*) from usuario where email = #{email} and senha = #{senha}")
+    int login(@Param("email") String email, @Param("senha") String senha);
 }

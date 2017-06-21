@@ -1,10 +1,12 @@
 package com.egov.contract.service;
 
+import com.egov.contract.models.request.Login;
 import com.egov.impl.database.UsuarioData;
 import com.egov.impl.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sun.rmi.runtime.Log;
 
 import java.util.List;
 
@@ -25,8 +27,9 @@ public class UsuarioService {
         return usuarioData.selectById(id);
     }
 
-    public int insertUsuario(Usuario usuario){
-        return usuarioData.insertUsuario(usuario);
+    public long insertUsuario(Usuario usuario){
+        usuarioData.insertUsuario(usuario);
+        return usuarioData.lastInsertId();
     }
 
     public int updateUsuario(Usuario usuario){
@@ -35,5 +38,9 @@ public class UsuarioService {
 
     public int deleteUsuario(int id){
         return usuarioData.deleteUsuario(id);
+    }
+
+    public boolean login(Login login){
+        return usuarioData.login(login.getEmail(),login.getSenha()) > 0;
     }
 }
