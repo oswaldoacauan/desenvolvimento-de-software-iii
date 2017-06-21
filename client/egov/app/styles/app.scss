@@ -1,0 +1,163 @@
+@import 'material-design-lite';
+
+.page-content {
+  height: calc(100vh - 56px);
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.mdl-layout__drawer-button { display: none; }
+
+.mdl-layout__header-row { padding-left: 16px; }
+
+.g-map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.g-map-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.btn-solicitacao {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 2;
+}
+
+.card-solicitacao {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 2;
+}
+
+.card-solicitacao-action {
+  width: 30%;
+}
+
+.backdrop-overlay {
+  z-index: 9999;
+  background-color: rgba(255, 255, 255, .4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em; /* Adjusts for spacing */
+  }
+
+  > .backdrop-content {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+  }
+}
+
+.mdl-card__title {
+  padding-bottom: 0;
+  text-transform: uppercase;
+}
+
+.blockquote {
+    padding: .5rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    border-left: .25rem solid #eceeef;
+}
+
+
+blockquote {
+    margin: 0 0 1rem;
+}
+
+.blockquote-footer::before {
+    content: "\2014 \00A0";
+}
+
+.blockquote-footer {
+    display: block;
+    font-size: 80%;
+    color: #636c72;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========  Select Field Variables ========== */
+$color-black: "0,0,0";
+$select-background-color: transparent;
+$select-border-color: unquote("rgba(#{$color-black}, 0.12)") !default;
+$select-font-size: 16px;
+$select-color: unquote("rgba(#{$color-black}, 0.26)") !default;
+$select-padding: 4px;
+
+/* ==========  Select Field ========== */
+
+/* Style Select Field */
+select {
+  font-family: inherit;
+  background-color: transparent;
+  width: 100%;
+  padding: $select-padding 0;
+  font-size: $select-font-size;
+  color: $select-color;
+  border: none;
+  border-bottom: 1px solid $select-border-color;
+}
+
+/* Remove focus */
+select:focus {
+  outline: none}
+
+/* Hide label */
+.mdl-selectfield label {display: none;}
+/* Use custom arrow */
+.mdl-selectfield select {appearance: none}
+.mdl-selectfield {
+  font-family: 'Roboto','Helvetica','Arial',sans-serif;
+  position: relative;
+    &:after {
+        position: absolute;
+        top: 0.75em;
+        right: 0.5em;
+        /* Styling the down arrow */
+        width: 0;
+        height: 0;
+        padding: 0;
+        content: '';
+        border-left: .25em solid transparent;
+        border-right: .25em solid transparent;
+        border-top: .375em solid $select-border-color;
+        pointer-events: none;
+    }
+}

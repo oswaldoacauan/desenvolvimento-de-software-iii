@@ -1,0 +1,55 @@
+{{mdl-button class="btn-solicitacao" isFloating=true icon="add"
+   action="toggleCreateSolicitacao"}}
+
+{{#g-map lat=latitude lng=longitude zoom=zoom as |context|}}
+  {{g-map-accessor context setMap=(action 'setMap')}}
+
+  {{#each model as |solicitacao|}}
+    {{#g-map-marker context
+      icon="http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+      group="solicitacoes" lat=solicitacao.lat lng=solicitacao.lng as |markerContext|}}
+      {{#g-map-infowindow markerContext class="infowindow"}}
+        {{#mdl-card title=solicitacao.tipo.descricao}}
+          <div class="mdl-card__supporting-text">
+            <b>{{solicitacao.endereco}}</b>
+            <b>Solicitante:</b>{{solicitacao.usuario.nome}}<br/>
+            <b>Status:</b> Pendente
+            <hr>
+            <p>{{solicitacao.descricao}}</p>
+          </div>
+        {{/mdl-card}}
+      {{/g-map-infowindow}}
+    {{/g-map-marker}}
+  {{/each}}
+
+  {{#if isCreatingSolicitacao}}
+    {{#g-map-marker context lat=newSolicitacao.lat lng=newSolicitacao.lng
+      onDrag=(action "handleDrag")
+      icon="http://maps.google.com/mapfiles/ms/icons/blue-dot.png" draggable=true as |markerContext|}}
+    {{/g-map-marker}}
+  {{/if}}
+{{/g-map}}
+
+{{#if isCreatingSolicitacao}}
+  {{#mdl-card title="Nova Solicitação" class="card-solicitacao"}}
+    <div class="mdl-card__supporting-text">
+      <p>{{newSolicitacao.endereco}}</p>
+      {{mdl-textfield label="Seu nome" value=newSolicitacao.nome}}
+      {{mdl-textfield label="Seu email" type="email" value=newSolicitacao.email}}
+      {{mdl-textarea label="Breve descrição" value=newSolicitacao.descricao}}
+
+      <div class="mdl-selectfield">
+        <select class="browser-default" onchange={{action (mut newSolicitacao.tipo) value="target.value"}}>
+          <option disabled selected style="display: none">Tipo de Solicitação</option>
+          {{#each tipos as |tipo|}}
+            <option value={{tipo.id}} selected={{if (eq newSolicitacao.tipo tipo.id) "true"}}>{{tipo.descricao}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+    {{#mdl-card-actions}}
+      {{mdl-button class="card-solicitacao-action" text="Cancelar" action="toggleCreateSolicitacao"}}
+      {{mdl-button class="card-solicitacao-action" text="Enviar" isAccent=true action="createSolicitacao"}}
+    {{/mdl-card-actions}}
+  {{/mdl-card}}
+{{/if}}
